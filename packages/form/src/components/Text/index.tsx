@@ -15,18 +15,20 @@ import { ProFormItemProps } from '../../interface';
 const ProFormText = React.forwardRef<
   any,
   ProSchema<string, ProFieldValueType, ProFormItemProps<InputProps>>
->(({ fieldProps, hasFeedback, render, renderFormItem, valueType, ...restProps }, ref) => (
-  <Form.Item {...pickProProps(restProps)}>
-    <ProField
-      text={fieldProps?.value as string}
-      ref={ref}
-      mode="edit"
-      formItemProps={fieldProps}
-      valueType={(valueType as 'text') || 'text'}
-      {...restProps}
-    />
-  </Form.Item>
-));
+>(({ fieldProps, hasFeedback, render, renderFormItem, valueType, ...restProps }, ref) => {
+  return (
+    <Form.Item {...pickProProps(restProps)}>
+      <ProField
+        text={fieldProps?.value as string}
+        ref={ref}
+        mode="edit"
+        formItemProps={fieldProps}
+        valueType={(valueType as 'text') || 'text'}
+        {...restProps}
+      />
+    </Form.Item>
+  )
+});
 
 // @ts-ignore
 ProFormText.type = 'ProField';
